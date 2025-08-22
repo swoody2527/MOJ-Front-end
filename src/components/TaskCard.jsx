@@ -1,10 +1,12 @@
+import axios from 'axios'
 import React from 'react'
 
 function TaskCard({id, title, desc, status, due}) {
+
   return (
     <div className='task-card'>
-        <p>Task Id: {id}</p>
         <p>Title: {title}</p>
+        <p>Task Id: {id}</p>
         <p>Desc: {desc}</p>
         <p>Status: {status}</p>
         <p>Due: {due}</p>
