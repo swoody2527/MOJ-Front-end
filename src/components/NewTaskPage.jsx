@@ -14,10 +14,10 @@ function NewTaskPage() {
 
 
 
-    const handleNewTaskSubmit = (e) => {
+    const handleNewTaskSubmit = async (e) => {
         e.preventDefault()
         try {
-            const res = axios.post('http://127.0.0.1:8000/task', {title: title, desc: desc, status: status, due: date})
+            const res = await axios.post('http://127.0.0.1:8000/task', {title: title, desc: desc, status: status, due: date})
             setSuccess(true)
             setTitle('')
             setDesc('')
