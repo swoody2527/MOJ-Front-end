@@ -31,7 +31,7 @@ function NewTaskPage() {
 
   return (
     <>
-    <Link to="/"><button>Back</button></Link>
+    <Link to="/"><button className='btn back'>Back</button></Link>
     <div className="form-container">
       <h1>New Task</h1>
       {success ? <h2>Task Submitted!</h2> : null}
@@ -60,7 +60,7 @@ function NewTaskPage() {
           <input onChange={(e) => setDate(e.target.value)} id="due" name="due" type="date" value={date} />
         </div>
 
-        <button type="submit" className="submit-btn">Save Task</button>
+        <button type="submit" className="btn submit">Save Task</button>
       </form>
     </div>
   </>

@@ -21,7 +21,7 @@ function SingleTaskPage() {
   return (
     <>
       <Link to="/">
-        <button>Back</button>
+        <button className="btn back">Back</button>
       </Link>
       <div className="form-container">
         <h1>Search Task by Id</h1>
