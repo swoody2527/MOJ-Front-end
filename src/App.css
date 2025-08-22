@@ -12,3 +12,35 @@
   font-size: 2em;
   font-weight: bold;
 }
+
+.tasks-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-top: 10vh;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.task-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: rgb(45, 43, 43);
+  margin: 10px;
+  width: 75%;
+  border-radius: 20px;
+  height: auto;
+  box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.244);
+}
+
+
+.delete-btn {
+  background-color: rgb(200, 31, 31);
+}
+
+.update-btn {
+  background-color: rgb(43, 43, 159);
+}

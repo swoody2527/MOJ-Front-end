@@ -1,9 +1,15 @@
 import React from 'react'
 
-function TaskCard() {
+function TaskCard({id, title, desc, status, due}) {
   return (
-    <div>
-      
+    <div className='task-card'>
+        <p>Task Id: {id}</p>
+        <p>Title: {title}</p>
+        <p>Desc: {desc}</p>
+        <p>Status: {status}</p>
+        <p>Due: {due}</p>
+        <button className='delete-btn'>Delete Task</button>
+        <button className='update-btn'>Update Status</button>
     </div>
   )
 }
