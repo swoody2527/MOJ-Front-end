@@ -13,10 +13,33 @@ function TaskCard({
   const [isUpdateClicked, setIsUpdateClicked] = useState(false);
   const [newStatus, setNewStatus] = useState(status);
 
-  const handleStatusForm = (e) => {
-    e.preventDefault();
-    handleStatusUpdate(newStatus);
+  const [isDeleting, setIsDeleting] = useState(false);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+
+  const handleDeleteClick = async () => {
+    try {
+      setIsDeleting(true);
+      await handleDelete();
+    } finally {
+      setIsDeleting(false);
+    }
   };
+
+  const handleStatusForm = async (e) => {
+    e.preventDefault();
+    try {
+      setIsUpdating(true);
+      await handleStatusUpdate(newStatus);
+      setIsUpdateClicked(false);
+    } finally {
+      setIsUpdating(false);
+    }
+  };
+
+
+
+  
 
   return (
     <div className="task-card">
@@ -35,8 +58,8 @@ function TaskCard({
       <p>
         <span className="task-label">Due:</span> {due}
       </p>
-      <button onClick={handleDelete} className="btn delete">
-        Delete Task
+      <button disabled={isDeleting} onClick={handleDeleteClick} className="btn delete">
+        {isDeleting ? 'Deleting...' : 'Delete Task'}
       </button>
       <button
         onClick={() => setIsUpdateClicked(!isUpdateClicked)}
@@ -56,8 +79,8 @@ function TaskCard({
             <option value="in-progress">In Progress</option>
             <option value="completed">Completed</option>
           </select>
-          <button className="btn submit" type="submit">
-            Submit
+          <button disabled={isUpdating} className="btn submit" type="submit">
+            {isUpdating ? 'Updating...' : 'Update'}
           </button>
         </form>
       ) : null}

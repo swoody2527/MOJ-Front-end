@@ -35,6 +35,12 @@
   color: black;
 }
 
+.tasks-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 /* Individual task cards */
 .task-card {
   color: white;
@@ -97,9 +103,15 @@
   font-size: 1.5em;
 }
 
+.err-msg {
+  font-weight: bold;
+  font-size: 1.5em;
+  color: red;
+}
+
 /* Buttons */
 .btn {
-  background-color: rgb(77, 193, 116);
+  background-color: rgb(0, 0, 0);
   margin: 5px;
 }
 

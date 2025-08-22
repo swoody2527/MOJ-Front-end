@@ -10,12 +10,16 @@ function NewTaskPage() {
     const [status, setStatus] = useState('')
     const [date, setDate] = useState('')
 
-    const [success, setSuccess] = useState(null)
+    const [success, setSuccess] = useState(false)
+    const [err, setErr] = useState('')
+    const [isPosting, setIsPosting] = useState(false)
 
 
 
     const handleNewTaskSubmit = async (e) => {
         e.preventDefault()
+        setSuccess(false)
+        setIsPosting(true)
         try {
             const res = await axios.post('http://127.0.0.1:8000/task', {title: title, desc: desc, status: status, due: date})
             setSuccess(true)
@@ -23,8 +27,10 @@ function NewTaskPage() {
             setDesc('')
             setStatus('')
             setDate('')
+            setErr('')
+            setIsPosting(false)
         } catch (err) {
-            console.log(err)
+            setErr(err.response.data)
         }
 
     }
@@ -35,10 +41,11 @@ function NewTaskPage() {
     <div className="form-container">
       <h1>New Task</h1>
       {success ? <h2>Task Submitted!</h2> : null}
+      {err ? <p className="err-msg">{err.detail}</p> : null}
       <form onSubmit={handleNewTaskSubmit}>
         <div className="task-option">
           <label htmlFor="title">Title:</label>
-          <input onChange={(e) => setTitle(e.target.value)} id="title" name="title" type="text" value={title} />
+          <input required={true} onChange={(e) => setTitle(e.target.value)} id="title" name="title" type="text" value={title} />
         </div>
 
         <div className="task-option">
@@ -48,7 +55,7 @@ function NewTaskPage() {
 
         <div className="task-option">
           <label htmlFor="status">Status:</label>
-          <select onChange={(e) => setStatus(e.target.value) } value={status}>
+          <select required={true} onChange={(e) => setStatus(e.target.value) } value={status}>
             <option value='todo'>To Do</option>
             <option value='in-progress'>In Progress</option>
             <option value='completed'>Completed</option>
@@ -57,10 +64,10 @@ function NewTaskPage() {
 
         <div className="task-option">
           <label htmlFor="due">Due:</label>
-          <input onChange={(e) => setDate(e.target.value)} id="due" name="due" type="date" value={date} />
+          <input required={true} onChange={(e) => setDate(e.target.value)} id="due" name="due" type="date" value={date} />
         </div>
 
-        <button type="submit" className="btn submit">Save Task</button>
+        <button disabled={!title || !status || !date || isPosting} type="submit" className="btn submit">{isPosting ? 'Creating Task...' : 'Save Task'}</button>
       </form>
     </div>
   </>
