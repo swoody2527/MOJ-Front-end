@@ -13,17 +13,27 @@
   font-weight: bold;
 }
 
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10vh;
+  min-height: 100vh;
+  width: 100vw;
+}
+
+
 .tasks-container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  padding-top: 10vh;
   justify-content: center;
   align-items: center;
+  color: black;
 }
 
-
 .task-card {
+  color: white;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,6 +44,46 @@
   border-radius: 20px;
   height: auto;
   box-shadow: 3px 3px 3px 3px rgba(0, 0, 0, 0.244);
+}
+
+.form-container {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 75%;
+}
+
+.task-option {
+  display: flex;
+  flex-direction: column;
+  border: 5px solid black;
+  padding: 5px;
+  margin: 5px;
+  width: 100%;
+}
+
+.task-option label {
+  font-size: 1.75em;
+  font-weight: bold;
+}
+
+.task-option input, .task-option select {
+  padding: 10px;
+  font-size: 1.5em;
+}
+
+.btn {
+  background-color: rgb(77, 193, 116);
+  margin: 5px;
 }
 
 
